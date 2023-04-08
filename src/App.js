@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+  import  Nav from './Component/Context/Nav';
+  import  "./App.css";
+  import Login from './Component/Context/Login';
+  import Home from './Component/Context/Home';
+  import { useContext } from 'react';
+  import { allContext } from './Component/Context/Context';
+const App = () => {
+  const {islogedin}=useContext(allContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  className='App'>
+      
+       {
+        islogedin ? <div> <Nav/><Home/> </div> :<Login/>
+       }
+       
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+
